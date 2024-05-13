@@ -6,8 +6,8 @@ import re
 import os
 from flask_cors import CORS
 
-filename = 'hr_rf2.pickle'
-def read_pickle(filename, saved_model_name:str):
+model_name = 'hr_rf2'
+def read_pickle(saved_model_name:str):
     '''
     In: 
         path:             path to folder where you want to read from
@@ -16,13 +16,13 @@ def read_pickle(filename, saved_model_name:str):
     Out: 
         model: the pickled model 
     '''
-    with open(path + saved_model_name + '.pickle', 'rb') as to_read:
+    with open(saved_model_name + '.pickle', 'rb') as to_read:
         model = pickle.load(to_read)
 
     return model
   
 # Read in pickle
-rf2 = read_pickle(path, 'hr_rf2')
+rf2 = read_pickle(model_name)
 
 app = Flask(__name__)
 CORS(app)
