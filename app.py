@@ -7,7 +7,7 @@ import os
 from flask_cors import CORS
 
 filename = 'hr_rf2.pickle'
-def read_pickle(path, saved_model_name:str):
+def read_pickle(filename, saved_model_name:str):
     '''
     In: 
         path:             path to folder where you want to read from
