@@ -73,8 +73,7 @@ def request_page():
     elif  proba < 55 and proba >=50:
         response = 'The model presents a balanced view with a {:.2f}% probability of the employee \
         leaving or staying. It appears that the employee's decision may be influenced by \
-        upcoming changes in their department. \
-        Close monitoring over the next quarter is recommended.'.format(proba)
+        upcoming changes in their department. Close monitoring over the next quarter is recommended.'.format(proba)
     
     
     
