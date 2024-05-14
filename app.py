@@ -42,11 +42,12 @@ def request_page():
     inputs= [float(n) for n in re.findall('[-+]?(?:\d*\.*\d+)', inputs)]
     
 
-    output = rf2.predict([inputs])[0]
-    proba = rf2.predict_proba([inputs])[0].max()
+    output = int(rf2.predict([inputs])[0])
+    proba = float(rf2.predict_proba([inputs])[0].max())
 
     data_set = {'prediction': output,
-                'probability': proba
+                'probability': proba,
+                'inputs': inputs
                 
                 }
                      
