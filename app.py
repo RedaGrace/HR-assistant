@@ -44,14 +44,44 @@ def request_page():
 
     output = int(rf2.predict([inputs])[0])
     proba = float(rf2.predict_proba([inputs])[0].max())
+    proba *= 100
 
-    data_set = {'prediction': output,
-                'probability': proba,
-                'inputs': inputs
-                
-                }
+    #1- Positive Prediction with High Probability
+    if output==1 and proba>=75:
+        response = 'Based on our predictive analysis, \
+        there is a high likelihood of {:.2f}% that the employee will continue with the company. \
+        Their recent performance improvements and \
+        engagement in team activities suggest a strong commitment to their role.'.format(proba)
+
+    #2- Positive Prediction with Moderate Probability
+    elif output==1 and proba<75:
+        response = 'The prediction model indicates a {}% chance that the employee \
+        will remain with the organization. While there are positive indicators of job satisfaction, \
+        we recommend further engagement to solidify their retention.'.format(proba)
+
+    #3- Negative Prediction with High Probability
+    elif output==0 and proba>=75:
+        response = 'Our analysis shows an {:.2f}% probability that the employee may leave the company.\
+        Factors such as a lack of recent promotions and a high workload have contributed to this prediction. \
+        Immediate action is advised to address these concerns.'.format(proba)
+
+    #4- Negative Prediction with Moderate Probability
+    elif output==0 and proba<75:
+        response = 'There is a {:.2f}% chance that the employee is considering leaving. \
+        This is primarily due to reported dissatisfaction with career progression opportunities. \
+        We suggest a review of their development plan to mitigate this risk.'.format(proba)
+    elif  proba < 55 and proba >=50:
+        response = 'The model presents a balanced view with a {:.2f}% probability of the employee \
+        leaving or staying. It appears that the employee's decision may be influenced by \
+        upcoming changes in their department. \
+        Close monitoring over the next quarter is recommended.'.format(proba)
+    
+    
+    
+
+   
                      
-    json_dump = json.dumps(data_set)
+    json_dump = json.dumps(response)
     return json_dump
 
 if __name__=='__main__':
