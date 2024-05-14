@@ -71,9 +71,9 @@ def request_page():
         This is primarily due to reported dissatisfaction with career progression opportunities. \
         We suggest a review of their development plan to mitigate this risk.'.format(proba)
     elif  proba < 55 and proba >=50:
-        response = 'The model presents a balanced view with a {:.2f}% probability of the employee \
+        response = "The model presents a balanced view with a {:.2f}% probability of the employee \
         leaving or staying. It appears that the employee's decision may be influenced by \
-        upcoming changes in their department. Close monitoring over the next quarter is recommended.'.format(proba)
+        upcoming changes in their department. Close monitoring over the next quarter is recommended.".format(proba)
     
     
     
