@@ -6,6 +6,9 @@ import re
 import os
 from flask_cors import CORS
 
+import warnings
+warnings.filterwarnings('ignore')
+
 model_name = 'hr_rf2'
 def read_pickle(saved_model_name:str):
     '''
